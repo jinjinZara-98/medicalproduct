@@ -472,7 +472,7 @@
 
  ### 2. DB 설계
  # :paperclip: ERD
- 
- ![제목 없음](https://user-images.githubusercontent.com/95284639/219762882-4d7c117c-a00a-44a4-866a-4d0cbf328e0c.png)
+
+![image](https://user-images.githubusercontent.com/95284639/208683868-b827e49c-7613-485c-8343-e2255cde1530.png)
 
 <br/>
