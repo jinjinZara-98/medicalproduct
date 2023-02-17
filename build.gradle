@@ -1,6 +1,13 @@
+buildscript {
+	ext {
+		queryDslVersion = "5.0.0"
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.6.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 	id 'java'
 }
 
@@ -24,6 +31,9 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
+	//querydsl 추가
+	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
 	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.8'
@@ -37,7 +47,6 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	testImplementation 'org.springframework.security:spring-security-test'
@@ -53,30 +62,22 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-//Querydsl 추가, 자동 생성된 Q클래스 gradle clean으로 제거
-configure(project) {
-	apply plugin: "io.spring.dependency-management"
+def querydslDir = "src/generated"
 
-	dependencies {
-		implementation "com.querydsl:querydsl-jpa"
-		implementation "com.querydsl:querydsl-core"
-		annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa" // querydsl JPAAnnotationProcessor 사용 지정
-		annotationProcessor "jakarta.persistence:jakarta.persistence-api:2.2.3"
-		annotationProcessor "jakarta.annotation:jakarta.annotation-api:1.3.5"
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+sourceSets {
+	main.java.srcDir querydslDir
+}
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
 	}
-
-	// querydsl 적용, 이 새끼도 메인 폴더에 Q타입클래스 생성
-	def generated='src/main/generated'
-	sourceSets {
-		main.java.srcDirs += [ generated ]
-	}
-
-	tasks.withType(JavaCompile) {
-		options.generatedSourceOutputDirectory = file(generated)
-	}
-
-	clean.doLast {
-		file(generated).deleteDir()
-	}
+	querydsl.extendsFrom compileClasspath
 }
 //querydsl 추가 끝
