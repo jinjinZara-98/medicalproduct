@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class OrderItem {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ordereditem_id")
     private long id;
 
