@@ -22,7 +22,7 @@ public class EmailService {
             sendMail.setSubject("JJ Medical " + member.getName()  + " 회원님의 비밀번호 변경 링크입니다.");
             sendMail.setText(new StringBuffer().append("<h1>[비밀번호 변경 링크입니다.]</h1>")
                     .append("<p>아래 링크를 클릭하시면 비밀번호를 변경하세요.</p>")
-                    .append("<a href='http://localhost:8080/members/find/password/change/?loginId=")
+                    .append("<a href='http://ec2-3-35-142-131.ap-northeast-2.compute.amazonaws.com:8080/members/find/password/change/?loginId=")
                     .append(member.getLoginId())
                     .append("'>이메일 인증 확인</a>")
                     .toString());
