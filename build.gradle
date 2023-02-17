@@ -48,6 +48,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	testImplementation 'org.springframework.security:spring-security-test'
