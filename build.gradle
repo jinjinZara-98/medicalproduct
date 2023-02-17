@@ -25,6 +25,10 @@ tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
 
+jar {
+	enabled = false
+}
+
 dependencies {
 	//querydsl 추가
 	implementation 'com.querydsl:querydsl-jpa'
