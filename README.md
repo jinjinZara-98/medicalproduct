@@ -33,7 +33,7 @@
 - **주문 -** 주문 상품 수령자 정보 작성, 최종 주문 진행, 주문 내역 리스트에서 주문 취소, 
              주문 상품 이름과 주문 상태로 주문 상품 검색, 주문 상세 정보 확인, 후기 작성 여부 확인
 - **후기 -** 주문 완료된 상품에 한해서 후기 작성, 작성된 후기는 상품 상세 화면과 후기 내역 리스트에서 확인, 후기 내역 리스트에서 후기 삭제
-- **인증, 인가 -** 스프링 시큐리티를 이용해 인증 기능을 구현, 과 관리자 2가지 역할을 만들어 인가 기능을 구현.
+- **인증, 인가 -** 스프링 시큐리티를 이용해 인증 기능을 구현, 일반과 관리자 2가지 역할을 만들어 인가 기능을 구현.
 
 ### 3. 사용 기술
 
@@ -119,7 +119,7 @@
   **3. 회원으로 관리자 페이지 접근**   
 ![ezgif com-video-to-gif (10)](https://user-images.githubusercontent.com/95284639/219718027-7cd05972-2190-4f14-89da-c895699c725c.gif)
   
-  회원가입한 회원으로 관리자 페이지에 접근.관리자 페이지에는 관리자만 접근할 수 있으므로 일반 회원은 인가 거부 페이지로 리다이렉트된다. <br/>
+  회원가입한 회원으로 관리자 페이지에 접근. 관리자 페이지에는 관리자만 접근할 수 있으므로 일반 회원은 인가 거부 페이지로 리다이렉트된다. <br/>
 
   **4. 관리자로 관리자 페이지 접근**
 ![ezgif com-video-to-gif (11)](https://user-images.githubusercontent.com/95284639/219718595-5a7481bb-0587-43ab-9748-fa1cf86725ce.gif)
@@ -147,7 +147,7 @@
 
 ![ezgif com-video-to-gif (14)](https://user-images.githubusercontent.com/95284639/219719861-4958307f-2899-4923-8341-6335196c2a6b.gif)
   
-  회원의 아이디를 입력하면 비밀번호 재설정 페이지의 링크를 메일로 . <br/>
+  회원의 아이디를 입력하면 비밀번호 재설정 페이지 링크를 메일로 전송. <br/>
   구글의 SMTP 서버를 이용해 메일 송신 기능을 구현.
   
   </details>
@@ -179,7 +179,7 @@
 ![ezgif com-video-to-gif (18)](https://user-images.githubusercontent.com/95284639/219721965-dcfe4ca3-feea-4bff-b46d-4de963bb715a.gif)
 
   주문 화면에서는 장바구니 화면에서 체크했던 상품의 정보가 출력. <br/> 
-  상품 수령자는 꼭 회원 정보와 일치할 필요가 없으므로 수정이 가능하고 배송 메시지도 선택할 수 있음. <br/>
+  상품 수령자는 꼭 회원 정보와 일치할 필요가 없으므로 수정이 가능. <br/>
   
   </details>
   <br/>  
@@ -209,7 +209,7 @@
   주문 상품은 주문 날짜 최신순으로 정렬되어 있음. 주문 날짜는 스프링 포맷터를 이용해 포맷팅 구현.
 
   **2. 주문 취소**     
-![ezgif com-video-to-gif (21)](https://user-images.githubusercontent.com/95284639/219727252-6dbd3ea5-f58a-49bb-afb6-c65291ad74db.gif)
+![ezgif com-video-to-gif (29)](https://user-images.githubusercontent.com/95284639/219760107-bc13adcb-fbd3-4386-a8bc-512711420212.gif)
   
   주문 취소 버튼을 누르면 주문 취소하려는 상품이 맞는지 사용자에게 다시 한 번 보여준다. <br/>
   사용자가 하단에 주문 취소 버튼을 누르면 최종적으로 주문 취소됨. <br/>
@@ -466,13 +466,13 @@
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewServiceUnitTest.java
  ┃ ┃ ┃ ┣ 📜MedicalproductApplicationTests.java
  ┃ ┃ ┃ ┗ 📜TestDB.java
-  
+ 
  </details>   
  <br/>     
-    
+
  ### 2. DB 설계
  # :paperclip: ERD
-
-![image](https://user-images.githubusercontent.com/95284639/219742122-b8d86700-32bb-4685-a0d3-bba8c9f6fdb8.png)
+ 
+ ![제목 없음](https://user-images.githubusercontent.com/95284639/219762882-4d7c117c-a00a-44a4-866a-4d0cbf328e0c.png)
 
 <br/>
