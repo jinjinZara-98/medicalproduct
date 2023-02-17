@@ -1,0 +1,143 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header"/>
+
+<body>
+    <div class="container">
+
+        <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+        <div>
+
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>장바구니 번호</th>
+
+                        <th>
+                            <div class="all_check_input_div">
+                                <input type="checkbox" class="all_check_input input_size_20" checked="checked">
+                                <span class="all_check_span">전체선택</span>
+                            </div>
+                        </th>
+
+                        <th>상품명</th>
+                        <th>상품사진</th>
+                        <th>상품 가격</th>
+                        <th>상품 수량</th>
+                        <th>주문관리</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <script>
+                          var i = 0;
+                    </script>
+
+                    <tr th:each="item : ${cartItems}">
+
+                        <td>
+                            <script type="text/javascript">
+                                document.write(++i);
+                            </script>
+                        </td>
+
+                        <td class="cart_info_td">
+                            <input type="hidden" class="individual_CartId" th:value="${item.id}">
+                            <input type="hidden" class="individual_ItemId" th:value="${item.itemId}">
+                            <input type="hidden" class="individual_Name" th:value="${item.name}">
+                            <input type="hidden" class="individual_ImageSrc" th:value="${item.imageSrc}">
+                            <input type="hidden" class="individual_Quantity" th:value="${item.quantity}">
+                            <input type="hidden" class="individual_Price" th:value="${item.price}">
+                            <input type="hidden" class="individual_TotalPrice" th:value="${item.price} * ${item.quantity}">
+
+                            <input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked" >
+                        </td>
+
+                        <td th:text="${item.name}">상품 이름</td>
+
+                        <td> <img th:src = "*{item.imageSrc}" width="75" height="75"> </td>
+
+                        <td th:text="${item.price} * ${item.quantity}">가격</td>
+
+                        <td>
+                            <div class="table_text_align_center quantity_div">
+                                <button type="button" th:onclick="|location.href='@{/cart/cartItem/{id}/QuantityPlus (id=${item.id})}'|">+</button>
+
+                                <h6 th:text="${item.quantity}">수량</h6>
+
+                                <button type="button" th:onclick="|location.href='@{/cart/cartItem/{id}/QuantityMinus (id=${item.id})}'|">-</button>
+                            </div>
+                        </td>
+
+                        <td>
+                            <a th:href="'javascript:cancel('+${item.id}+')'"
+                               class="btn btn-danger">삭제하기</a>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 text-center">
+                    <table class="table table-striped">
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>총 상품 종류</strong>
+                                </td>
+                                <td>
+                                    <span class="totalKind_span">0</span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>총 상품 개수</strong>
+                                </td>
+                                <td>
+                                    <span class="totalCount_span">0</span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>결제 금액</strong>
+
+                                </td>
+                                <td>
+                                    <span class="totalPrice_span">10000</span> 원
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="py-5 text-center">
+                    <a th:href="'javascript:order()'"
+                       class="btn btn-dark" a>주문하기</a>
+                </div>
+            </div>
+
+            <form action="/order/cartItem" method="POST" class="order_form">
+            </form>
+
+        </div>
+
+        <div th:replace="fragments/footer :: footer" />
+    </div>
+</body>
+
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/js/app/cart.js?ver=2.7"></script>
+</html>

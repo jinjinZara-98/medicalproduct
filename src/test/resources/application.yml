@@ -1,0 +1,21 @@
+spring:
+    profiles:
+
+    datasource:
+        url: jdbc:h2:mem:testdb;MODE=MySQL;
+
+    jpa:
+        database: h2
+        generate-ddl: true
+        hibernate:
+            ddl-auto: create
+
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+                format_sql: true
+#               querydsl은 jpql의 빌더역할, 결국엔 jpql이 됨, JPQL을 볼 수 있다.
+                use_sql_comments: true
+
+logging.level:
+    org.hibernate.SQL: debug
