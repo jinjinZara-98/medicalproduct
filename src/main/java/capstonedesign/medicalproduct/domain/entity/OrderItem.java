@@ -11,7 +11,7 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ordereditem_id")
+    @Column(name = "order_item_id")
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

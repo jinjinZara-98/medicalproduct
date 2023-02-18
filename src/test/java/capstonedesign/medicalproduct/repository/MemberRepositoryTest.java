@@ -1,6 +1,5 @@
 package capstonedesign.medicalproduct.repository;
 
-import capstonedesign.medicalproduct.domain.Information;
 import capstonedesign.medicalproduct.domain.MemberRole;
 import capstonedesign.medicalproduct.domain.entity.Member;
 import capstonedesign.medicalproduct.factory.member.MemberFactory;

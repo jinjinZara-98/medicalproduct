@@ -1,6 +1,6 @@
 package capstonedesign.medicalproduct.repository.order;
 
-import capstonedesign.medicalproduct.dto.item.OrderSearch;
+import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.dto.order.OrderItemResponseDto;
 import java.util.List;
 

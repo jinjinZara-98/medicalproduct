@@ -1,6 +1,6 @@
 package capstonedesign.medicalproduct.controller;
 
-import capstonedesign.medicalproduct.dto.item.OrderSearch;
+import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.dto.order.*;
 import capstonedesign.medicalproduct.security.member.MemberInfo;
 import capstonedesign.medicalproduct.service.OrderService;

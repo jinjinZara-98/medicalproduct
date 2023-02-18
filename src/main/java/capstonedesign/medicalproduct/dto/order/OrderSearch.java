@@ -1,4 +1,4 @@
-package capstonedesign.medicalproduct.dto.item;
+package capstonedesign.medicalproduct.dto.order;
 
 import capstonedesign.medicalproduct.domain.OrderStatus;
 import lombok.AllArgsConstructor;

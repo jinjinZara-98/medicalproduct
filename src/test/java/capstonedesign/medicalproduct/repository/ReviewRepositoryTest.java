@@ -56,5 +56,4 @@ public class ReviewRepositoryTest extends RepositoryTest{
         //then
         Assertions.assertEquals("잘 받았습니다.", ActualResult.get(0).getContent());
     }
-
 }

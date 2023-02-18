@@ -10,12 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@RunWith(SpringRunner.class)와 @SpringBootTest가 있어야
-//스프링 인티그레이션 해서 스프링 올려 테스트 가능, 안그럼 @Autowired 다 실패함
-//junit실행할때 스프링이랑 엮어서 실행할래
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-//@Transactional
 class MemberServiceIntegrationTest extends ServiceIntegrationTest{
 
     @Test

@@ -1,6 +1,6 @@
 package capstonedesign.medicalproduct.service.integration;
 
-import capstonedesign.medicalproduct.dto.item.OrderSearch;
+import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.domain.OrderStatus;
 import capstonedesign.medicalproduct.dto.order.OrderItemResponseDto;
 import capstonedesign.medicalproduct.dto.order.OrderRequestDto;
@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
 
 class OrderServiceIntegrationTest extends ServiceIntegrationTest{
 

@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Configuration;
 public class AwsS3Config {
 
     //application.properties 파일의 갑소가 매핑
-    @Value("${cloud.aws.credentials.access-key}")
+    @Value("${cloud.aws.s3.access-key}")
     private String accessKey;
 
-    @Value("${cloud.aws.credentials.secret-key}")
+    @Value("${cloud.aws.s3.secret-key}")
     private String secretKey;
 
     @Value("${cloud.aws.region.static}")

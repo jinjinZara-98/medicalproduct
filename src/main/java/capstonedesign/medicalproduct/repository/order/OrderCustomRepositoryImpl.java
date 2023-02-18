@@ -1,7 +1,7 @@
 package capstonedesign.medicalproduct.repository.order;
 
 import capstonedesign.medicalproduct.domain.entity.*;
-import capstonedesign.medicalproduct.dto.item.OrderSearch;
+import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.dto.order.OrderItemResponseDto;
 import capstonedesign.medicalproduct.dto.order.QOrderItemResponseDto;
 import com.querydsl.core.BooleanBuilder;

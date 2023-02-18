@@ -1,6 +1,5 @@
 package capstonedesign.medicalproduct.repository;
 
-
 import capstonedesign.medicalproduct.domain.entity.Item;
 import capstonedesign.medicalproduct.dto.item.ItemDto;
 import capstonedesign.medicalproduct.dto.item.ItemSearch;

@@ -1,7 +1,7 @@
 package capstonedesign.medicalproduct.repository;
 
 import capstonedesign.medicalproduct.domain.MemberRole;
-import capstonedesign.medicalproduct.dto.item.OrderSearch;
+import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.domain.OrderStatus;
 import capstonedesign.medicalproduct.domain.entity.Item;
 import capstonedesign.medicalproduct.domain.entity.Member;

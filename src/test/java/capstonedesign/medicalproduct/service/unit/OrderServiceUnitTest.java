@@ -1,6 +1,6 @@
 package capstonedesign.medicalproduct.service.unit;
 
-import capstonedesign.medicalproduct.dto.item.OrderSearch;
+import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.domain.OrderStatus;
 import capstonedesign.medicalproduct.domain.entity.*;
 import capstonedesign.medicalproduct.dto.order.OrderItemResponseDto;

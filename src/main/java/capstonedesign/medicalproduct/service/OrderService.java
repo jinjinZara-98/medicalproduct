@@ -4,7 +4,7 @@ import capstonedesign.medicalproduct.domain.entity.Item;
 import capstonedesign.medicalproduct.domain.entity.Member;
 import capstonedesign.medicalproduct.domain.entity.Order;
 import capstonedesign.medicalproduct.domain.entity.OrderItem;
-import capstonedesign.medicalproduct.dto.item.OrderSearch;
+import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.dto.order.*;
 import capstonedesign.medicalproduct.repository.cart.CartRepository;
 import capstonedesign.medicalproduct.repository.item.ItemRepository;
