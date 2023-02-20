@@ -1,7 +1,7 @@
 package capstonedesign.medicalproduct.service.integration;
 
+import capstonedesign.medicalproduct.dto.review.ReviewedItemDto;
 import capstonedesign.medicalproduct.dto.review.Uploadedfile;
-import capstonedesign.medicalproduct.dto.review.ReviewDto;
 import capstonedesign.medicalproduct.dto.review.ReviewResponseDto;
 import capstonedesign.medicalproduct.factory.review.ReviewFactory;
 import org.junit.jupiter.api.*;
@@ -31,7 +31,7 @@ class ReviewServiceIntegrationTest extends ServiceIntegrationTest{
         //given
 
         //when
-        List<ReviewDto> reviewDtoList = reviewService.findAllByMemberId(member.getId());
+        List<ReviewedItemDto> reviewDtoList = reviewService.findAllByMemberId(member.getId());
 
         //then
         Assertions.assertEquals(1, reviewDtoList.size());
@@ -44,7 +44,7 @@ class ReviewServiceIntegrationTest extends ServiceIntegrationTest{
         //given
 
         //when
-        List<ReviewDto> reviewDtoList = reviewService.findAllByItemId(item.getId());
+        List<ReviewedItemDto> reviewDtoList = reviewService.findAllByItemId(item.getId());
 
         //then
         Assertions.assertEquals(1, reviewDtoList.size());
@@ -58,7 +58,7 @@ class ReviewServiceIntegrationTest extends ServiceIntegrationTest{
         reviewService.delete(testDB.findReview().getId());
 
         //when
-        List<ReviewDto> reviewDtoList = reviewService.findAllByMemberId(member.getId());
+        List<ReviewedItemDto> reviewDtoList = reviewService.findAllByMemberId(member.getId());
 
         //then
         Assertions.assertEquals(0, reviewDtoList.size());
