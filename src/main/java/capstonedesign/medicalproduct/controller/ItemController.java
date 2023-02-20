@@ -3,7 +3,7 @@ package capstonedesign.medicalproduct.controller;
 import capstonedesign.medicalproduct.dto.item.ItemSearch;
 import capstonedesign.medicalproduct.dto.item.ItemDetailDto;
 import capstonedesign.medicalproduct.dto.item.ItemDto;
-import capstonedesign.medicalproduct.dto.review.ReviewDto;
+import capstonedesign.medicalproduct.dto.review.ReviewedItemDto;
 import capstonedesign.medicalproduct.service.AwsS3Service;
 import capstonedesign.medicalproduct.service.ItemService;
 import capstonedesign.medicalproduct.service.ReviewService;
@@ -35,11 +35,11 @@ public class ItemController {
 
         ItemDetailDto itemDetailDto = itemService.findById(itemId);
 
-        List<ReviewDto> reviewList = reviewService.findAllByItemId(itemId);
+        List<ReviewedItemDto> reviewList = reviewService.findAllByItemId(itemId);
 
-        List<ReviewDto> newReviewList = new ArrayList<>();
+        List<ReviewedItemDto> newReviewList = new ArrayList<>();
 
-        for (ReviewDto reviewDto : reviewList) {
+        for (ReviewedItemDto reviewDto : reviewList) {
             reviewDto.setStoreFileName(awsS3Service.getThumbnailPath(reviewDto.getStoreFileName()));
             newReviewList.add(reviewDto);
         }

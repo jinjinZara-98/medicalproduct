@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
-public class ReviewDto {
+public class ReviewedItemDto {
 
     private long reviewId;
 
@@ -33,7 +33,7 @@ public class ReviewDto {
     private String storeFileName;
 
     @QueryProjection
-    public ReviewDto(long reviewId, String memberName, String title, String content,
+    public ReviewedItemDto(long reviewId, String memberName, String title, String content,
                      LocalDateTime reviewDate, String uploadFileName, String storeFileName) {
         this.reviewId = reviewId;
         this.memberName = memberName;
@@ -45,7 +45,7 @@ public class ReviewDto {
     }
 
     @QueryProjection
-    public ReviewDto(long reviewId, long itemId, String itemName, String itemImageSrc, LocalDateTime reviewDate,
+    public ReviewedItemDto(long reviewId, long itemId, String itemName, String itemImageSrc, LocalDateTime reviewDate,
                      String title, String content, String uploadFileName, String storeFileName) {
         this.reviewId = reviewId;
         this.itemId = itemId;

@@ -2,7 +2,7 @@ package capstonedesign.medicalproduct.domain.entity;
 
 import capstonedesign.medicalproduct.domain.Information;
 import capstonedesign.medicalproduct.domain.MemberRole;
-import capstonedesign.medicalproduct.dto.member.MemberDetailDTO;
+import capstonedesign.medicalproduct.dto.member.MemberDetailDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -53,7 +53,7 @@ public class Member {
         this.memberRole = memberRole;
     }
 
-    public Member update(MemberDetailDTO memberDetailDTO) {
+    public Member update(MemberDetailDto memberDetailDTO) {
         this.information.setName(memberDetailDTO.getName());
         this.information.setPhoneNumber(memberDetailDTO.getPhoneNumber());
         this.information.setAddress(memberDetailDTO.getAddress());

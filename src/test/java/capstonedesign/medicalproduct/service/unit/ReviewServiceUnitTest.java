@@ -1,8 +1,8 @@
 package capstonedesign.medicalproduct.service.unit;
 
+import capstonedesign.medicalproduct.dto.review.ReviewedItemDto;
 import capstonedesign.medicalproduct.dto.review.Uploadedfile;
 import capstonedesign.medicalproduct.domain.entity.*;
-import capstonedesign.medicalproduct.dto.review.ReviewDto;
 import capstonedesign.medicalproduct.factory.item.ItemFactory;
 import capstonedesign.medicalproduct.factory.member.MemberFactory;
 import capstonedesign.medicalproduct.factory.review.ReviewFactory;
@@ -60,7 +60,7 @@ public class ReviewServiceUnitTest {
 
         //given
         Uploadedfile uploadedfile = ReviewFactory.makeUploadedFile();
-        Review createdReview = ReviewFactory.makeTestReview(member, item);
+        Review createdReview = ReviewFactory.makeTestReview2(member, item);
 
         //mocking
         given(memberRepository.findById(member.getId())).willReturn(Optional.ofNullable(member));
@@ -79,13 +79,13 @@ public class ReviewServiceUnitTest {
     public void findAllByMemberId() {
 
         //given
-        List<ReviewDto> ExpectResult = ReviewFactory.makeReviewDtoList();
+        List<ReviewedItemDto> ExpectResult = ReviewFactory.makeReviewDtoList();
 
         //mocking
         given(reviewRepository.findAllByMemberId(member.getId())).willReturn(ExpectResult);
 
         //when
-        List<ReviewDto> ActualResult = reviewService.findAllByMemberId(member.getId());
+        List<ReviewedItemDto> ActualResult = reviewService.findAllByMemberId(member.getId());
 
         //then
         Assertions.assertEquals(ExpectResult.get(0).getContent(), ActualResult.get(0).getContent());
@@ -96,13 +96,13 @@ public class ReviewServiceUnitTest {
     public void findAllByItemId() {
 
         //given
-        List<ReviewDto> ExpectResult = ReviewFactory.makeReviewDtoList();
+        List<ReviewedItemDto> ExpectResult = ReviewFactory.makeReviewDtoList();
 
         //mocking
         given(reviewRepository.findAllByItemId(item.getId())).willReturn(ExpectResult);
 
         //when
-        List<ReviewDto> ActualResult = reviewService.findAllByItemId(member.getId());
+        List<ReviewedItemDto> ActualResult = reviewService.findAllByItemId(member.getId());
 
         //then
         Assertions.assertEquals(ExpectResult.get(0).getContent(), ActualResult.get(0).getContent());

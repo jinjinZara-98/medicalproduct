@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 
 @Data
-public class LoginForm {
+public class LoginFormDto {
 
     @NotEmpty(message = "ID는 필수 입니다")
     private String loginId;

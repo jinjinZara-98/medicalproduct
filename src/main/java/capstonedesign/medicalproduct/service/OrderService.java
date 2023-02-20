@@ -6,6 +6,9 @@ import capstonedesign.medicalproduct.domain.entity.Order;
 import capstonedesign.medicalproduct.domain.entity.OrderItem;
 import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.dto.order.*;
+import capstonedesign.medicalproduct.exception.ItemNotFoundException;
+import capstonedesign.medicalproduct.exception.MemberNotFoundException;
+import capstonedesign.medicalproduct.exception.OrderNotFoundException;
 import capstonedesign.medicalproduct.repository.cart.CartRepository;
 import capstonedesign.medicalproduct.repository.item.ItemRepository;
 import capstonedesign.medicalproduct.repository.member.MemberRepository;
@@ -31,7 +34,7 @@ public class OrderService {
     public long save(long memberId, OrderRequestDto orderDto) {
 
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회원은 없습니다. id = " + memberId));
+                .orElseThrow(() -> new MemberNotFoundException("해당 회원은 없습니다. id = " + memberId));
 
         List<OrderItem> orderItems = new ArrayList<>();
 
@@ -41,7 +44,7 @@ public class OrderService {
                 cartRepository.deleteById(Long.valueOf(orderInfo.getCartId()));
 
             Item item = itemRepository.findById(orderInfo.getItemId())
-                .orElseThrow(() -> new IllegalArgumentException("해당 상품은 없습니다. id = " + orderInfo.getItemId()));
+                .orElseThrow(() -> new ItemNotFoundException("해당 상품은 없습니다. id = " + orderInfo.getItemId()));
 
             OrderItem orderItem = OrderItem.createOrderItem(item, orderInfo.getTotalPrice(), orderInfo.getQuantity());
 
@@ -55,7 +58,7 @@ public class OrderService {
 
     public RecipientInfo findById(long orderId) {
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 주문은 없습니다. id = " + orderId));
+                .orElseThrow(() -> new OrderNotFoundException("해당 주문은 없습니다. id = " + orderId));
 
         return new RecipientInfo(order);
     }
@@ -73,7 +76,7 @@ public class OrderService {
     public void cancel(Long orderId) {
 
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 주문은 없습니다. id = " + orderId));
+                .orElseThrow(() -> new OrderNotFoundException("해당 주문은 없습니다. id = " + orderId));
 
         order.cancel();
     }

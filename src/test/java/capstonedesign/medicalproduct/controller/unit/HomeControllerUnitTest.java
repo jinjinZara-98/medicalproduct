@@ -1,7 +1,6 @@
 package capstonedesign.medicalproduct.controller.unit;
 
 import capstonedesign.medicalproduct.controller.HomeController;
-import capstonedesign.medicalproduct.dto.item.ItemSearch;
 import capstonedesign.medicalproduct.factory.item.ItemFactory;
 import capstonedesign.medicalproduct.service.ItemService;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -41,7 +41,6 @@ public class HomeControllerUnitTest {
     @DisplayName("검색한 이름에 해당하는 상품을 조회한다.")
     public void findAllByName() throws Exception {
         //given
-        ItemSearch itemSearch = new ItemSearch("수술가운");
 
         //mocking
         given(itemService.findAllByName(any(), ArgumentMatchers.anyInt())).willReturn(ItemFactory.makePageItemDto());
@@ -50,6 +49,8 @@ public class HomeControllerUnitTest {
         ResultActions resultActions = mockMvc.perform(get("/"));
 
         resultActions
-        .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("home"))
+                .andExpect(MockMvcResultMatchers.model().attributeExists("itemSearch"));
     }
 }

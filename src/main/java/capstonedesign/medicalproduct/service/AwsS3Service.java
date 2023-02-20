@@ -24,17 +24,14 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class AwsS3Service {
 
-    //버킷명
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
     private final AmazonS3Client amazonS3;
 
     public Uploadedfile uploadFile(MultipartFile file) {
-        //업로드한 파일명
         String originalFilename = file.getOriginalFilename();
 
-        //S3 스토리지에 저장할 파일명
         String fileName = createFileName(file.getOriginalFilename());
 
         ObjectMetadata objectMetadata = new ObjectMetadata();
@@ -48,7 +45,6 @@ public class AwsS3Service {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
         }
 
-        //업로드한 파일명과 저장될 파일명이 들어있는 Uploadfile 반환
         Uploadedfile uploadfile = new Uploadedfile();
         uploadfile.setUploadFileName(originalFilename);
         uploadfile.setStoreFileName(fileName);
@@ -56,14 +52,10 @@ public class AwsS3Service {
         return uploadfile;
     }
 
-    // S3 스토리지에 저장할 파일명 생성
     private String createFileName(String fileName) {
         return UUID.randomUUID().toString().concat(getFileExtension(fileName));
     }
 
-    // file 형식이 잘못된 경우를 확인하기 위해 만들어진 로직,
-    // 파일 타입과 상관없이 업로드할 수 있게 하기 위해 .의 존재 유무만 판단
-    // 확장면 반환
     private String getFileExtension(String fileName) {
         try {
             return fileName.substring(fileName.lastIndexOf("."));
@@ -72,19 +64,16 @@ public class AwsS3Service {
         }
     }
 
-    //s3 스토리지에 업르드된 파일 삭제
+
     public void deleteFile(String fileName) {
         amazonS3.deleteObject(new DeleteObjectRequest(bucket, fileName));
     }
 
-    //s3 스토리지에 업로드한 후기 이미지 경로 가져오는
-    //업도드한 후기 이미지 출력하기 위해
     public String getThumbnailPath(String path) {
 
         return amazonS3.getUrl(bucket, path).toString();
     }
 
-    //s3 스토리지에 업로드한 후기 사진 다운 받는
     public ResponseEntity<byte[]> getObject(String storedFileName, String uploadFileName) throws IOException {
         S3Object o = amazonS3.getObject(new GetObjectRequest(bucket, storedFileName));
         S3ObjectInputStream objectInputStream = ((S3Object) o).getObjectContent();

@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 
 @Data
 @NoArgsConstructor
-public class MemberDetailDTO {
+public class MemberDetailDto {
 
     @NotEmpty(message = "아이디는 필수입니다")
     private String loginId;
@@ -43,7 +43,7 @@ public class MemberDetailDTO {
     @NotEmpty(message = "계좌번호는 필수입니다")
     private String accountNumber;
 
-    public MemberDetailDTO(MemberInfo memberInfo) {
+    public MemberDetailDto(MemberInfo memberInfo) {
         this.loginId = memberInfo.getLoginId();
         this.name = memberInfo.getName();
         this.phoneNumber = memberInfo.getPhoneNumber();
@@ -55,7 +55,7 @@ public class MemberDetailDTO {
         this.accountNumber = memberInfo.getAccountNumber();
     }
 
-    public MemberDetailDTO(Member member) {
+    public MemberDetailDto(Member member) {
         this.loginId = member.getLoginId();
         this.name = member.getInformation().getName();
         this.phoneNumber = member.getInformation().getPhoneNumber();
@@ -68,7 +68,7 @@ public class MemberDetailDTO {
     }
 
     @Builder
-    public MemberDetailDTO(String name, String phoneNumber, String address, String addressDetail,
+    public MemberDetailDto(String name, String phoneNumber, String address, String addressDetail,
                            String email, String accountHost, String bankName, String accountNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;

@@ -35,7 +35,7 @@ public class MemberController {
 
     @PostMapping("members/register")
     public String joinPro(@Valid @ModelAttribute("MemberRegisterForm") MemberRequestDto form,
-                                 BindingResult bindingResult){
+                          BindingResult bindingResult){
 
         if (memberService.existsByLoginId(form.getLoginId()))
             bindingResult.reject("DuplicateLoginId", "입력하신 아이디는 다른 회원이 사용중입니다");
@@ -83,14 +83,14 @@ public class MemberController {
     }
 
     @GetMapping("members/passwordFind")
-    public String findPassword(@ModelAttribute("passwordFindForm") FindPasswordForm findPasswordForm) {
+    public String findPassword(@ModelAttribute("passwordFindForm") FindPasswordFormDto findPasswordFormDto) {
 
         return "members/passwordFind";
     }
 
     @PostMapping("members/passwordFind")
     public String findPasswordPro(@Valid @ModelAttribute("passwordFindForm")
-                                  FindPasswordForm findPasswordForm, BindingResult bindingResult,
+                                  FindPasswordFormDto findPasswordForm, BindingResult bindingResult,
                                   Model model) {
 
         if(bindingResult.hasErrors()) {
@@ -148,7 +148,7 @@ public class MemberController {
     @GetMapping("members/memberDetail")
     public String memberDetail(@AuthenticationPrincipal MemberInfo member, Model model) {
 
-        MemberDetailDTO memberDetail = new MemberDetailDTO(member);
+        MemberDetailDto memberDetail = new MemberDetailDto(member);
 
         model.addAttribute("memberDetail", memberDetail);
 
@@ -158,7 +158,7 @@ public class MemberController {
     @PostMapping("members/update")
     public String updateMemberInfo(HttpServletRequest request, HttpServletResponse response,
                                    @AuthenticationPrincipal MemberInfo member,
-                                   @Valid @ModelAttribute("memberDetail") MemberDetailDTO memberDetailDTO,
+                                   @Valid @ModelAttribute("memberDetail") MemberDetailDto memberDetailDTO,
                                    BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasErrors()) {

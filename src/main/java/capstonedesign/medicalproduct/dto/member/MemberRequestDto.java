@@ -44,8 +44,8 @@ public class MemberRequestDto {
     private String accountNumber;
 
     @Builder
-    public MemberRequestDto(String loginId, String password, String name, String phoneNumber, String address, String addressDetail, String email,
-                              String accountHost, String bankName, String accountNumber) {
+    public MemberRequestDto(String loginId, String password, String name, String phoneNumber, String address,
+                            String addressDetail, String email, String accountHost, String bankName, String accountNumber) {
         this.loginId = loginId;
         this.password = password;
         this.name = name;

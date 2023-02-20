@@ -2,7 +2,7 @@ package capstonedesign.medicalproduct.service.unit;
 
 import capstonedesign.medicalproduct.domain.entity.Member;
 import capstonedesign.medicalproduct.dto.member.FindIdDto;
-import capstonedesign.medicalproduct.dto.member.MemberDetailDTO;
+import capstonedesign.medicalproduct.dto.member.MemberDetailDto;
 import capstonedesign.medicalproduct.dto.member.MemberRequestDto;
 import capstonedesign.medicalproduct.dto.member.MemberResponseDTO;
 import capstonedesign.medicalproduct.factory.member.MemberFactory;
@@ -44,16 +44,16 @@ public class MemberServiceUnitTest {
     public void save() {
         //given
         MemberRequestDto ExpectResult = MemberFactory.makeMemberRequestDto();
-        Member joinedMember = MemberFactory.makeMemberRequestDto().toEntity();
+        Member joinedMember = MemberFactory.makeTestMember2();
 
         //mocking
         given(memberRepository.save(any())).willReturn(joinedMember);
 
         //when
-        MemberDetailDTO ActualResult = memberService.save(ExpectResult);
+        long savedMemberId  = memberService.save(ExpectResult);
 
         //then
-        Assertions.assertEquals(ExpectResult.getName(), ActualResult.getName());
+        Assertions.assertEquals(2L, savedMemberId);
     }
 
     @Test
@@ -66,10 +66,10 @@ public class MemberServiceUnitTest {
         given(memberRepository.findById(member.getId())).willReturn(Optional.ofNullable(member));
 
         //when
-        MemberDetailDTO MemberDetailDTO = memberService.findById(member.getId());
+        MemberDetailDto MemberDetailDto = memberService.findById(member.getId());
 
         //then
-        Assertions.assertEquals("홍길동", MemberDetailDTO.getName());
+        Assertions.assertEquals("홍길동", MemberDetailDto.getName());
     }
 
     @Test
@@ -126,7 +126,7 @@ public class MemberServiceUnitTest {
         given(memberRepository.findById(member.getId())).willReturn(Optional.ofNullable(member));
 
         //when
-        MemberDetailDTO memberResponseDTO = memberService.updateMemberInfo(member.getId(), MemberFactory.makeUpdateMemberDetailDTO());
+        MemberDetailDto memberResponseDTO = memberService.updateMemberInfo(member.getId(), MemberFactory.makeUpdateMemberDetailDTO());
 
         //then
         Assertions.assertEquals("임꺽정", memberResponseDTO.getName());

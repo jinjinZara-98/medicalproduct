@@ -25,6 +25,17 @@ public class BasicFactory {
         return member;
     }
 
+    public static Member makeTestMember2() {
+        Information information = new Information("임꺽정", "01012345678", "충북 충주시 대소원면 대학로 50",
+                "대원생활관", "임꺽정", "농협", "3520459732493");
+
+        Member member = new Member("jeong123", "jeong", information,"jeong123@naver.com", MemberRole.ROLE_USER);
+
+        ReflectionTestUtils.setField(member, "id", 2L);
+
+        return member;
+    }
+
     public static Item makeTestItem() {
         Item item = new Item("의료소모품", "http://www.yolomarket.kr/data/item/G171103/thumb-4A06002040_L_250x250.jpg",
                 "수술시 시술자가 입는 입는 내의입니다. 린넨 소재이므로 세탁 후 재사용이 가능합니다.", "수술가운", 20000);
@@ -80,10 +91,19 @@ public class BasicFactory {
     }
 
     public static Review makeTestReview (Member member, Item item) {
-        Review review = new Review("배송이 빨라요", "잘 쓰겠습니다.", member, item,
+        Review review = new Review("좋아요.", "잘 받았습니다.", member, item,
                 "9780b5f-2f60-4aca-954b-c5b6d8f3206a.jfif", "images.png", LocalDateTime.now());
 
         ReflectionTestUtils.setField(review, "id", 1L);
+
+        return review;
+    }
+
+    public static Review makeTestReview2 (Member member, Item item) {
+        Review review = new Review("배송이 빠르네요.", "잘 쓰겠습니다.", member, item,
+                "1780b5f-2f60-4aca-954b-c5b6d8f3206a.jfif", "images.png", LocalDateTime.now());
+
+        ReflectionTestUtils.setField(review, "id", 2L);
 
         return review;
     }

@@ -4,6 +4,9 @@ import capstonedesign.medicalproduct.domain.entity.Cart;
 import capstonedesign.medicalproduct.domain.entity.Item;
 import capstonedesign.medicalproduct.domain.entity.Member;
 import capstonedesign.medicalproduct.dto.cart.CartResponseDto;
+import capstonedesign.medicalproduct.exception.CartNotFoundException;
+import capstonedesign.medicalproduct.exception.ItemNotFoundException;
+import capstonedesign.medicalproduct.exception.MemberNotFoundException;
 import capstonedesign.medicalproduct.repository.cart.CartRepository;
 import capstonedesign.medicalproduct.repository.item.ItemRepository;
 import capstonedesign.medicalproduct.repository.member.MemberRepository;
@@ -27,10 +30,10 @@ public class CartService {
     public long save(long memberId, long itemId, int quantity) {
 
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id = " + memberId));
+                .orElseThrow(() -> new MemberNotFoundException("해당 사용자가 없습니다. id = " + memberId));
 
         Item item = itemRepository.findById(itemId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 상품은 없습니다. id = " + itemId));
+                .orElseThrow(() -> new ItemNotFoundException("해당 상품은 없습니다. id = " + itemId));
 
         Cart cart = Cart.createCart(member, item, quantity);
 
@@ -45,7 +48,7 @@ public class CartService {
     @Transactional
     public void increaseQuantity(long cartId){
         Cart cart = cartRepository.findById(cartId)
-                .orElseThrow(() -> new  IllegalArgumentException("해당 장바구니 상품은 없습니다. id = " + cartId));
+                .orElseThrow(() -> new CartNotFoundException("해당 장바구니 상품은 없습니다. id = " + cartId));
 
         cart.increaseQuantity();
     }
@@ -53,7 +56,7 @@ public class CartService {
     @Transactional
     public void decreaseQuantity(long cartId){
         Cart cart = cartRepository.findById(cartId)
-                .orElseThrow(() -> new  IllegalArgumentException("해당 장바구니 상품은 없습니다. id = " + cartId));
+                .orElseThrow(() -> new CartNotFoundException("해당 장바구니 상품은 없습니다. id = " + cartId));
 
         cart.decreaseQuantity();
 
@@ -65,7 +68,7 @@ public class CartService {
     @Transactional
     public void delete(Long cartId) {
         Cart cart = cartRepository.findById(cartId)
-                .orElseThrow(() -> new  IllegalArgumentException("해당 장바구니 상품은 없습니다. id = " + cartId));
+                .orElseThrow(() -> new CartNotFoundException("해당 장바구니 상품은 없습니다. id = " + cartId));
 
         cartRepository.delete(cart);
     }

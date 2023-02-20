@@ -1,7 +1,7 @@
 package capstonedesign.medicalproduct.service.integration;
 
 import capstonedesign.medicalproduct.dto.member.FindIdDto;
-import capstonedesign.medicalproduct.dto.member.MemberDetailDTO;
+import capstonedesign.medicalproduct.dto.member.MemberDetailDto;
 import capstonedesign.medicalproduct.dto.member.MemberResponseDTO;
 import capstonedesign.medicalproduct.factory.member.MemberFactory;
 import org.junit.jupiter.api.Assertions;
@@ -15,15 +15,17 @@ class MemberServiceIntegrationTest extends ServiceIntegrationTest{
     @Test
     @DisplayName("회원 가입을 진행한다.")
     public void save() {
-        MemberDetailDTO memberDetailDTO = memberService.save(MemberFactory.makeMemberRequestDto());
+        long savedMemberId = memberService.save(MemberFactory.makeMemberRequestDto());
 
-        Assertions.assertEquals("임꺽정", memberDetailDTO.getName());
+        MemberDetailDto memberDetailDto = memberService.findById(savedMemberId);
+
+        Assertions.assertEquals("임꺽정", memberDetailDto.getName());
     }
 
     @Test
     @DisplayName("회원 정보를 확인한다.")
     public void findById() {
-        MemberDetailDTO memberDetailDTO = memberService.findById(member.getId());
+        MemberDetailDto memberDetailDTO = memberService.findById(member.getId());
 
         Assertions.assertEquals(member.getLoginId(), memberDetailDTO.getLoginId());
     }
@@ -61,17 +63,10 @@ class MemberServiceIntegrationTest extends ServiceIntegrationTest{
         memberService.updateMemberInfo(member.getId(), MemberFactory.makeUpdateMemberDetailDTO());
         persistenceContextClear();
 
-        MemberDetailDTO memberResponseDTO = memberService.findById(member.getId());
+        MemberDetailDto memberResponseDTO = memberService.findById(member.getId());
 
         Assertions.assertEquals( "임꺽정", memberResponseDTO.getName());
     }
-
-//    @Test
-//    @DisplayName("변경된 회원 비밀번호를 확인한다.")
-//    public void updatePassword() {
-//        memberService.updatePassword(member.getLoginId(), "gildong1");
-//        persistenceContextClear();
-//    }
 
     private void persistenceContextClear() {
         em.flush();

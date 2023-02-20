@@ -1,6 +1,6 @@
 package capstonedesign.medicalproduct.controller;
 
-import capstonedesign.medicalproduct.dto.member.MemberDetailDTO;
+import capstonedesign.medicalproduct.dto.member.MemberDetailDto;
 import capstonedesign.medicalproduct.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String admin(Model model) {
-        List<MemberDetailDTO> memberDetailDTOS = memberService.findAll();
+        List<MemberDetailDto> memberDetailDTOS = memberService.findAll();
 
         model.addAttribute("memberList", memberDetailDTOS);
 

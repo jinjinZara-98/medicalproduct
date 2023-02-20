@@ -1,7 +1,7 @@
 package capstonedesign.medicalproduct.factory.member;
 
 import capstonedesign.medicalproduct.dto.member.FindIdDto;
-import capstonedesign.medicalproduct.dto.member.MemberDetailDTO;
+import capstonedesign.medicalproduct.dto.member.MemberDetailDto;
 import capstonedesign.medicalproduct.dto.member.MemberRequestDto;
 import capstonedesign.medicalproduct.factory.BasicFactory;
 
@@ -24,8 +24,8 @@ public class MemberFactory extends BasicFactory {
     }
 
     //MemberService 단위 테스트 회원 정보 수정에 사용
-    public static MemberDetailDTO makeUpdateMemberDetailDTO() {
-        MemberDetailDTO memberRequestDto = MemberDetailDTO.builder()
+    public static MemberDetailDto makeUpdateMemberDetailDTO() {
+        MemberDetailDto memberRequestDto = MemberDetailDto.builder()
                 .name("임꺽정")
                 .phoneNumber("01012341234")
                 .address("충북 충주시 대소원면 대학로 50")

@@ -1,9 +1,9 @@
 package capstonedesign.medicalproduct.controller;
 
+import capstonedesign.medicalproduct.dto.review.ReviewedItemDto;
 import capstonedesign.medicalproduct.dto.review.Uploadedfile;
 import capstonedesign.medicalproduct.dto.item.ItemDetailDto;
 import capstonedesign.medicalproduct.dto.review.ReviewResponseDto;
-import capstonedesign.medicalproduct.dto.review.ReviewDto;
 import capstonedesign.medicalproduct.dto.review.ReviewRegisterForm;
 import capstonedesign.medicalproduct.security.member.MemberInfo;
 import capstonedesign.medicalproduct.service.AwsS3Service;
@@ -75,10 +75,10 @@ public class ReviewController {
     @GetMapping("review/reviewList")
     public String getReviewList(@AuthenticationPrincipal MemberInfo member, Model model) {
 
-        List<ReviewDto> reviewList = reviewService.findAllByMemberId(member.getId());
+        List<ReviewedItemDto> reviewList = reviewService.findAllByMemberId(member.getId());
 
-        List<ReviewDto> newReviewList = new ArrayList<>();
-        for (ReviewDto reviewDto : reviewList) {
+        List<ReviewedItemDto> newReviewList = new ArrayList<>();
+        for (ReviewedItemDto reviewDto : reviewList) {
             reviewDto.setStoreFileName(awsS3Service.getThumbnailPath(reviewDto.getStoreFileName()));
             newReviewList.add(reviewDto);
         }

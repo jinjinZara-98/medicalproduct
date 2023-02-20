@@ -4,6 +4,7 @@ import capstonedesign.medicalproduct.domain.entity.Item;
 import capstonedesign.medicalproduct.dto.item.ItemSearch;
 import capstonedesign.medicalproduct.dto.item.ItemDetailDto;
 import capstonedesign.medicalproduct.dto.item.ItemDto;
+import capstonedesign.medicalproduct.exception.ItemNotFoundException;
 import capstonedesign.medicalproduct.repository.item.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -34,7 +35,7 @@ public class ItemService {
     public ItemDetailDto findById(long itemId) {
 
         Item item =  itemRepository.findById(itemId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 상품은 없습니다. id" + itemId));
+                .orElseThrow(() -> new ItemNotFoundException("해당 상품은 없습니다. id" + itemId));
 
         return new ItemDetailDto(item);
     }
