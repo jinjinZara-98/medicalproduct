@@ -56,11 +56,11 @@ public class OrderService {
         return orderRepository.save(order).getId();
     }
 
-    public RecipientInfo findById(long orderId) {
+    public RecipientInfoDto findById(long orderId) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new OrderNotFoundException("해당 주문은 없습니다. id = " + orderId));
 
-        return new RecipientInfo(order);
+        return new RecipientInfoDto(order);
     }
 
 

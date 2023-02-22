@@ -5,7 +5,7 @@ import lombok.Data;
 
 
 @Data
-public class RecipientInfo {
+public class RecipientInfoDto {
 
     private String recipientName;
 
@@ -23,7 +23,7 @@ public class RecipientInfo {
 
     private String deliveryMessage;
 
-    public RecipientInfo(Order order) {
+    public RecipientInfoDto(Order order) {
         this.recipientName = order.getInformation().getName();
         this.recipientPhoneNumber = order.getInformation().getPhoneNumber();
         this.recipientAddress = order.getInformation().getAddress();

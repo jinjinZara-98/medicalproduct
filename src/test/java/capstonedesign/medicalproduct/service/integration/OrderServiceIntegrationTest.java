@@ -4,7 +4,7 @@ import capstonedesign.medicalproduct.dto.order.OrderSearch;
 import capstonedesign.medicalproduct.domain.OrderStatus;
 import capstonedesign.medicalproduct.dto.order.OrderItemResponseDto;
 import capstonedesign.medicalproduct.dto.order.OrderRequestDto;
-import capstonedesign.medicalproduct.dto.order.RecipientInfo;
+import capstonedesign.medicalproduct.dto.order.RecipientInfoDto;
 import capstonedesign.medicalproduct.factory.order.OrderFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +24,7 @@ class OrderServiceIntegrationTest extends ServiceIntegrationTest{
 
         //when
         long orderId = orderService.save(member.getId(), orderRequestDto);
-        RecipientInfo recipientInfo = orderService.findById(orderId);
+        RecipientInfoDto recipientInfo = orderService.findById(orderId);
 
         //then
         Assertions.assertEquals(order.getInformation().getName(), recipientInfo.getRecipientName());
@@ -37,7 +37,7 @@ class OrderServiceIntegrationTest extends ServiceIntegrationTest{
         //given
 
         //when
-        RecipientInfo recipientInfo = orderService.findById(order.getId());
+        RecipientInfoDto recipientInfo = orderService.findById(order.getId());
 
         //then
         Assertions.assertEquals(order.getInformation().getName(), recipientInfo.getRecipientName());

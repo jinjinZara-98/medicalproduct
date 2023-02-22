@@ -2,7 +2,7 @@ package capstonedesign.medicalproduct.repository;
 
 import capstonedesign.medicalproduct.domain.MemberRole;
 import capstonedesign.medicalproduct.domain.entity.*;
-import capstonedesign.medicalproduct.dto.review.ReviewDto;
+import capstonedesign.medicalproduct.dto.review.ReviewedItemDto;
 import capstonedesign.medicalproduct.factory.member.MemberFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +38,7 @@ public class ReviewRepositoryTest extends RepositoryTest{
         //given
 
         //when
-        List<ReviewDto> reviewDtoList = reviewRepository.findAllByMemberId(member.getId());
+        List<ReviewedItemDto> reviewDtoList = reviewRepository.findAllByMemberId(member.getId());
 
         //then
         Assertions.assertEquals("잘 받았습니다.", reviewDtoList.get(0).getContent());
@@ -51,7 +51,7 @@ public class ReviewRepositoryTest extends RepositoryTest{
         //given
 
         //when
-        List<ReviewDto> ActualResult =  reviewRepository.findAllByItemId(item.getId());
+        List<ReviewedItemDto> ActualResult =  reviewRepository.findAllByItemId(item.getId());
 
         //then
         Assertions.assertEquals("잘 받았습니다.", ActualResult.get(0).getContent());

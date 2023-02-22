@@ -5,12 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
 @Getter
-
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-
-@NamedEntityGraph(name = "Review.all", attributeNodes = { @NamedAttributeNode("member"), @NamedAttributeNode("item") } )
+@Entity
 public class Review {
 
     @Id

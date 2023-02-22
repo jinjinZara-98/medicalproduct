@@ -87,7 +87,7 @@ public class OrderController {
 
         model.addAttribute("orderedItems", orderedItems);
 
-        RecipientInfo recipientInfo = orderService.findById(orderId);
+        RecipientInfoDto recipientInfo = orderService.findById(orderId);
 
         model.addAttribute("recipientInfo", recipientInfo);
 
@@ -95,7 +95,7 @@ public class OrderController {
     }
 
     @PostMapping("order/{id}/tryCancel")
-    public String tryCancelOrder(@PathVariable("id") long orderId, Model model) {
+    public String tryOrderCancel(@PathVariable("id") long orderId, Model model) {
 
         List<OrderItemResponseDto> orderedItems = orderService.findAllOrderItemById(orderId);
 

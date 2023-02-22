@@ -28,7 +28,7 @@ public class CartController {
     }
 
     @GetMapping("cart/put")
-    public String putTheItem(@AuthenticationPrincipal MemberInfo memberInfo,
+    public String addTheItem(@AuthenticationPrincipal MemberInfo memberInfo,
                              @ModelAttribute("itemDetailDto") ItemDetailDto itemDetailDto) {
 
         cartService.save(memberInfo.getId(), itemDetailDto.getId(), itemDetailDto.getQuantity());
@@ -37,7 +37,7 @@ public class CartController {
     }
 
     @GetMapping("cart")
-    public String cartItems(@AuthenticationPrincipal MemberInfo memberInfo, Model model){
+    public String findAllByMemberId(@AuthenticationPrincipal MemberInfo memberInfo, Model model){
 
         List<CartResponseDto> cartItems = cartService.findAllByMemberId(memberInfo.getId());
 
@@ -47,7 +47,7 @@ public class CartController {
     }
 
     @GetMapping("cart/cartItem/{id}/QuantityPlus")
-    public String addTheQuantity(@PathVariable("id") Long cartId){
+    public String increaseQuantit(@PathVariable("id") Long cartId){
 
         cartService.increaseQuantity(cartId);
 
@@ -55,7 +55,7 @@ public class CartController {
     }
 
     @GetMapping("cart/cartItem/{id}/QuantityMinus")
-    public String minusTheQuantity(@PathVariable("id") Long cartId){
+    public String decreaseQuantity(@PathVariable("id") Long cartId){
 
         cartService.decreaseQuantity(cartId);
 
@@ -63,7 +63,7 @@ public class CartController {
     }
 
     @PostMapping("cart/{cartId}/cancel")
-    public String deleteItem(@PathVariable("cartId") Long cartId) {
+    public String delete(@PathVariable("cartId") Long cartId) {
 
         cartService.delete(cartId);
         return "redirect:/cart";

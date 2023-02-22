@@ -5,7 +5,7 @@ import capstonedesign.medicalproduct.domain.OrderStatus;
 import capstonedesign.medicalproduct.domain.entity.*;
 import capstonedesign.medicalproduct.dto.order.OrderItemResponseDto;
 import capstonedesign.medicalproduct.dto.order.OrderRequestDto;
-import capstonedesign.medicalproduct.dto.order.RecipientInfo;
+import capstonedesign.medicalproduct.dto.order.RecipientInfoDto;
 import capstonedesign.medicalproduct.factory.cart.CartFactory;
 import capstonedesign.medicalproduct.factory.item.ItemFactory;
 import capstonedesign.medicalproduct.factory.member.MemberFactory;
@@ -95,7 +95,7 @@ public class OrderServiceUnitTest {
         given(orderRepository.findById(order.getId())).willReturn(Optional.ofNullable(order));
 
         //when
-        RecipientInfo recipientInfo = orderService.findById(order.getId());
+        RecipientInfoDto recipientInfo = orderService.findById(order.getId());
 
         //then
         Assertions.assertEquals("홍길동", recipientInfo.getRecipientName());

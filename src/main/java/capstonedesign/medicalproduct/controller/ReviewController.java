@@ -1,10 +1,10 @@
 package capstonedesign.medicalproduct.controller;
 
+import capstonedesign.medicalproduct.dto.review.ReviewRequestDto;
 import capstonedesign.medicalproduct.dto.review.ReviewedItemDto;
 import capstonedesign.medicalproduct.dto.review.Uploadedfile;
 import capstonedesign.medicalproduct.dto.item.ItemDetailDto;
 import capstonedesign.medicalproduct.dto.review.ReviewResponseDto;
-import capstonedesign.medicalproduct.dto.review.ReviewRegisterForm;
 import capstonedesign.medicalproduct.security.member.MemberInfo;
 import capstonedesign.medicalproduct.service.AwsS3Service;
 import capstonedesign.medicalproduct.service.ItemService;
@@ -37,19 +37,19 @@ public class ReviewController {
 
         ItemDetailDto item = itemService.findById(itemId);
 
-        ReviewRegisterForm reviewRegisterForm = new ReviewRegisterForm();
+        ReviewRequestDto reviewRequestDto = new ReviewRequestDto();
 
-        reviewRegisterForm.setItemId(item.getId()); reviewRegisterForm.setItemName(item.getName());
-        reviewRegisterForm.setItemImageSrc(item.getImageSrc());
+        reviewRequestDto.setItemId(item.getId()); reviewRequestDto.setItemName(item.getName());
+        reviewRequestDto.setItemImageSrc(item.getImageSrc());
 
-        model.addAttribute("reviewRegisterForm", reviewRegisterForm);
+        model.addAttribute("reviewRequestDto", reviewRequestDto);
 
         return "reviews/reviewRegister";
     }
 
     @PostMapping("review/register")
     public String registerPro(@AuthenticationPrincipal MemberInfo member,
-                              @Valid @ModelAttribute("reviewRegisterForm") ReviewRegisterForm reviewRegisterForm,
+                              @Valid @ModelAttribute("reviewRequestDto") ReviewRequestDto reviewRequestDto,
                               BindingResult bindingResult) throws IOException {
 
         if(bindingResult.hasErrors()) {
@@ -57,23 +57,23 @@ public class ReviewController {
             return "reviews/reviewRegister";
         }
 
-        if(reviewRegisterForm.getImageFile().isEmpty()) {
+        if(reviewRequestDto.getImageFile().isEmpty()) {
 
             bindingResult.reject("imageFileIsNull", "후기 사진을 첨부해주세요!");
 
             return "reviews/reviewRegister";
         }
 
-        Uploadedfile uploadedfile = awsS3Service.uploadFile(reviewRegisterForm.getImageFile());
+        Uploadedfile uploadedfile = awsS3Service.uploadFile(reviewRequestDto.getImageFile());
 
-        reviewService.save(member.getId(), reviewRegisterForm.getItemId(),
-                reviewRegisterForm.getTitle(), reviewRegisterForm.getContent(), uploadedfile);
+        reviewService.save(member.getId(), reviewRequestDto.getItemId(),
+                reviewRequestDto.getTitle(), reviewRequestDto.getContent(), uploadedfile);
 
         return "redirect:/";
     }
 
     @GetMapping("review/reviewList")
-    public String getReviewList(@AuthenticationPrincipal MemberInfo member, Model model) {
+    public String findAllByMemberId(@AuthenticationPrincipal MemberInfo member, Model model) {
 
         List<ReviewedItemDto> reviewList = reviewService.findAllByMemberId(member.getId());
 
@@ -101,7 +101,7 @@ public class ReviewController {
     }
 
     @PostMapping("/review/{id}/cancel")
-    public String deleteReview(@PathVariable("id") long reviewId) {
+    public String delete(@PathVariable("id") long reviewId) {
 
         ReviewResponseDto reviewResponseDto = reviewService.findById(reviewId);
         reviewService.delete(reviewId);

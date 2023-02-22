@@ -13,7 +13,6 @@ import java.util.List;
 
 @Getter
 @Table(name = "orders")
-@NamedEntityGraph(name="Order.all", attributeNodes = @NamedAttributeNode("member"))
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Order {

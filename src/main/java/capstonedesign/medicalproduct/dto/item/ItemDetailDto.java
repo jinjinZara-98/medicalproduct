@@ -24,15 +24,6 @@ public class ItemDetailDto {
 
     private String introduction;
 
-    public ItemDetailDto(long id, String name, String imageSrc, int quantity, int price, String introduction) {
-        this.id = id;
-        this.name = name;
-        this.imageSrc = imageSrc;
-        this.quantity = quantity;
-        this.price = price;
-        this.introduction = introduction;
-    }
-
     public ItemDetailDto(Item item) {
         this.id = item.getId();
         this.name = item.getName();

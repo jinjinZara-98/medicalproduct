@@ -1,6 +1,8 @@
 package capstonedesign.medicalproduct.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
@@ -8,6 +10,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Information {
 
     private String name;
@@ -17,9 +20,6 @@ public class Information {
     private String accountHost;
     private String bankName;
     private String accountNumber;
-
-    protected Information() {
-    }
 
     public Information(String name, String phoneNumber, String address, String addressDetail,
                        String accountHost, String bankName, String accountNumber) {
