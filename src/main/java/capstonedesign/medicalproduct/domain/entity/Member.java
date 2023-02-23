@@ -19,7 +19,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String loginId;
 
     @Column(nullable = false)
@@ -28,7 +28,7 @@ public class Member {
     @Embedded
     private Information information;
 
-    @Column
+    @Column(nullable = false)
     private String email;
 
     @Enumerated(EnumType.STRING)

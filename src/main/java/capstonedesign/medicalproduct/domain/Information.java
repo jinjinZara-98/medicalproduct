@@ -12,7 +12,6 @@ import javax.persistence.Embeddable;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Information {
-
     private String name;
     private String phoneNumber;
     private String address;
