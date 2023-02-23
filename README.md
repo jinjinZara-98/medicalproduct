@@ -308,8 +308,8 @@
  ┃ ┃ ┃ ┃ ┃ ┃ ┗  📜ItemSearch.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📂member
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FindIdDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FindPasswordForm.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginForm.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FindPasswordFormDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginFormDto.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberDetailDto.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberRequestDto.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberResponseDto.java
@@ -320,10 +320,10 @@
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OrderItemResponseDto.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OrderRequestDto.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OrderSearch.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RecipientInfo.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RecipientInfoDto.java
  ┃ ┃ ┃ ┃ ┃ ┗  📂review
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewRegisterForm.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewRequestDto.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewResponseDto.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Uploadedfile.java
  ┃ ┃ ┃ ┃ ┣ 📂exception
@@ -331,7 +331,7 @@
  ┃ ┃ ┃ ┃ ┃ ┣ 📜ItemNotFoundException.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberNotFoundException.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜OrderNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewNotFoundException.java
  ┃ ┃ ┃ ┃ ┣ 📂interceptor
  ┃ ┃ ┃ ┃ ┃ ┗ 📜LogInterceptor.java
  ┃ ┃ ┃ ┃ ┣  📂listener
@@ -344,7 +344,7 @@
  ┃ ┃ ┃ ┃ ┃ ┣ 📂 cart
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ItemCustomRepository.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ItemCustomRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ItemRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ItemRepository.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📂 member
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberRepository.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewQueryRepository.java
@@ -352,7 +352,7 @@
  ┃ ┃ ┃ ┃ ┃ ┣ 📂 orderr
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OrderCustomRepository.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OrderCustomRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣  📜OrderRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗  📜OrderRepository.java
  ┃ ┃ ┃ ┃ ┃ ┗📂 review
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewCustomRepository.java  
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewCustomRepositoryImpl.java  
