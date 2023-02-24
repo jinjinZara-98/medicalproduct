@@ -45,7 +45,7 @@
 - SpringSecurity
 - JPA(Spring Data JPA)
 - QueryDsl
-- JUnit
+- JUnit6
 - Mokito
 
 ##### Build Tool
@@ -165,7 +165,7 @@
   **2-1. 장바구니에 상품 담기**   
 ![ezgif com-video-to-gif (16)](https://user-images.githubusercontent.com/95284639/219721074-1d5fccf0-77f0-470d-bdfe-e4b93bfeab35.gif)
 
-  의사/ 의료사업자 회원으로 로그인해서 원하는 상품을 장바구니에 담음. <br/>
+  로그인해서 원하는 상품을 장바구니에 담음. <br/>
   메인화면에서 장바구니 담기 버튼을 누르면 1개, 상품 상세 화면에서 장바구니 버튼을 누르면 설정한 개수만큼 징바구니에 담는다.
  
   **2-2. 장바구니 화면에서 상품 확인, 수량 조절 상품 삭제**   
@@ -352,7 +352,7 @@
  ┃ ┃ ┃ ┃ ┃ ┣ 📂 orderr
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OrderCustomRepository.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜OrderCustomRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗  📜OrderRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜OrderRepository.java
  ┃ ┃ ┃ ┃ ┃ ┗📂 review
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewCustomRepository.java  
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewCustomRepositoryImpl.java  
@@ -360,7 +360,7 @@
  ┃ ┃ ┃ ┃ ┣ 📂security
  ┃ ┃ ┃ ┃ ┃ ┣ 📂common
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FormWebAuthenticationDetails
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FormWebAuthenticationDetailsSource
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FormWebAuthenticationDetailsSource
  ┃ ┃ ┃ ┃ ┃ ┣ 📂handler
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FormWebAuthenticationDetails
  ┃ ┃ ┃ ┃ ┃ ┃ ┗  📜FormWebAuthenticationDetailsSource
