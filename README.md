@@ -45,7 +45,7 @@
 - SpringSecurity
 - JPA(Spring Data JPA)
 - QueryDsl
-- JUnit6
+- JUnit5
 - Mokito
 
 ##### Build Tool
@@ -363,11 +363,11 @@
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FormWebAuthenticationDetailsSource
  ┃ ┃ ┃ ┃ ┃ ┣ 📂handler
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FormWebAuthenticationDetails
- ┃ ┃ ┃ ┃ ┃ ┃ ┗  📜FormWebAuthenticationDetailsSource
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FormWebAuthenticationDetailsSource
  ┃ ┃ ┃ ┃ ┃ ┣ 📂member
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomUserDetailsService
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberContext
- ┃ ┃ ┃ ┃ ┃ ┃ ┗  📜MemberInfo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberInfo
  ┃ ┃ ┃ ┃ ┃ ┣ 📜FormAuthenticationProvider
  ┃ ┃ ┃ ┃ ┃ ┗ 📜SecurityConfig
  ┃ ┃ ┃ ┃ ┣ 📂service
