@@ -71,7 +71,7 @@
                     </div>
                 </div>
 
-                <form action="/cart/put" th:object="${itemDetailDto}" class="cart_form">
+                <form action="/cart/add" th:object="${itemDetailDto}" class="cart_form">
                     <div class="container">
                         <div class="row">
 
@@ -112,7 +112,7 @@
                                     </div>
 
                                     <div class="cart">
-                                        <a sec:authorize="isAuthenticated()" th:href="'javascript:putItem()'" class="btn btn-danger my-3" a>장바구니에 담기</a>
+                                        <a sec:authorize="isAuthenticated()" th:href="'javascript:addItem()'" class="btn btn-danger my-3" a>장바구니에 담기</a>
                                         <a sec:authorize="isAnonymous()" th:href="@{/login}" class="btn btn-danger my-3" a>장바구니에 담기</a>
                                     </div>
 
@@ -164,7 +164,7 @@
                     </table>
                 </div>
 
-                <form action="/order/itemOne" method="post" class="order_form">
+                <form action="/order/item" method="post" class="order_form">
                     <input type="hidden" name="orderItemRequestDtos[0].itemId" value="">
                     <input type="hidden" name="orderItemRequestDtos[0].quantity" value="">
                     <input type="hidden" name="orderItemRequestDtos[0].name" value="">

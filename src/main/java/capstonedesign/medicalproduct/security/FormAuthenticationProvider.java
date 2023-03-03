@@ -1,6 +1,5 @@
 package capstonedesign.medicalproduct.security;
 
-import capstonedesign.medicalproduct.security.common.FormWebAuthenticationDetails;
 import capstonedesign.medicalproduct.security.member.MemberContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -36,12 +35,6 @@ public class FormAuthenticationProvider implements AuthenticationProvider {
         if (!passwordEncoder.matches(password, memberContext.getPassword())) {
 
             throw new BadCredentialsException("Invalid password");
-        }
-
-        String secretKey = ((FormWebAuthenticationDetails) authentication.getDetails()).getSecretKey();
-
-        if (secretKey == null || !secretKey.equals("secret")) {
-            throw new IllegalArgumentException("Invalid Secret");
         }
 
         return new UsernamePasswordAuthenticationToken(memberContext.getMemberInfo(),

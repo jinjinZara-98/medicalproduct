@@ -1,5 +1,7 @@
 package capstonedesign.medicalproduct.dto.review;
 
+import capstonedesign.medicalproduct.domain.entity.Item;
+import capstonedesign.medicalproduct.dto.item.ItemDetailDto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,4 +33,10 @@ public class ReviewRequestDto {
     private String uploadFileName;
 
     private String storeFileName;
+
+    public ReviewRequestDto(ItemDetailDto itemDetailDto) {
+        this.itemId = itemDetailDto.getId();
+        this.itemName = itemDetailDto.getName();
+        this.itemImageSrc = itemDetailDto.getImageSrc();
+    }
 }

@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@Slf4j
 @RequiredArgsConstructor
 public class LoginController {
 

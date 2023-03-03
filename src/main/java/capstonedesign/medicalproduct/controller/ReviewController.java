@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@Slf4j
 @RequiredArgsConstructor
 public class ReviewController {
 
@@ -35,12 +34,9 @@ public class ReviewController {
     @GetMapping("review/item/{id}")
     public String register(@PathVariable("id") long itemId, Model model){
 
-        ItemDetailDto item = itemService.findById(itemId);
+        ItemDetailDto itemDetailDto = itemService.findById(itemId);
 
-        ReviewRequestDto reviewRequestDto = new ReviewRequestDto();
-
-        reviewRequestDto.setItemId(item.getId()); reviewRequestDto.setItemName(item.getName());
-        reviewRequestDto.setItemImageSrc(item.getImageSrc());
+        ReviewRequestDto reviewRequestDto = new ReviewRequestDto(itemDetailDto);
 
         model.addAttribute("reviewRequestDto", reviewRequestDto);
 
@@ -50,7 +46,7 @@ public class ReviewController {
     @PostMapping("review/register")
     public String registerPro(@AuthenticationPrincipal MemberInfo member,
                               @Valid @ModelAttribute("reviewRequestDto") ReviewRequestDto reviewRequestDto,
-                              BindingResult bindingResult) throws IOException {
+                              BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()) {
 

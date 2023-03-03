@@ -21,7 +21,6 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository{
 
     public List<OrderItemResponseDto> findAllOrderItemByMemberIdAndOrderInfo(long memberId, OrderSearch orderSearch) {
 
-        QMember m = new QMember("m");
         QItem i = new QItem("i");
         QOrder o = new QOrder("o");
         QOrderItem oi = new QOrderItem("oi");
@@ -40,11 +39,9 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository{
         List<OrderItemResponseDto> result = jpaQueryFactory.
                                     select( new QOrderItemResponseDto( i.id, i.name, i.imageSrc, o.orderDate, o.id,
                                             oi.quantity, oi.orderPrice, o.status,
-
                                             select(r.id)
                                                     .from(r)
                                                     .where(r.member.id.eq(o.member.id)
-
                                                     .and(r.item.id.eq(i.id)) ) ) ).distinct()
 
                                     .from(o, oi)

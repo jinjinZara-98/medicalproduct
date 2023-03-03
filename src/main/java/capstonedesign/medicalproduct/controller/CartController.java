@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@Slf4j
 @RequiredArgsConstructor
 public class CartController {
 
     private final CartService cartService;
 
-    @PostMapping("cart/{itemId}/itemInstantPut")
+    @PostMapping("cart/{itemId}/instantAdd")
     public String instantAddTheItem(@AuthenticationPrincipal MemberInfo memberInfo, @PathVariable("itemId") long itemId){
 
         cartService.save(memberInfo.getId(), itemId, 1);
@@ -27,7 +26,7 @@ public class CartController {
         return "redirect:/";
     }
 
-    @GetMapping("cart/put")
+    @GetMapping("cart/add")
     public String addTheItem(@AuthenticationPrincipal MemberInfo memberInfo,
                              @ModelAttribute("itemDetailDto") ItemDetailDto itemDetailDto) {
 
@@ -47,7 +46,7 @@ public class CartController {
     }
 
     @GetMapping("cart/cartItem/{id}/QuantityPlus")
-    public String increaseQuantit(@PathVariable("id") Long cartId){
+    public String increaseQuantity(@PathVariable("id") Long cartId){
 
         cartService.increaseQuantity(cartId);
 

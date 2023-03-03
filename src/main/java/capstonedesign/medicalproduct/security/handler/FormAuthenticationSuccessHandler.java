@@ -17,7 +17,6 @@ import java.io.IOException;
 public class FormAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private RequestCache requestCache = new HttpSessionRequestCache();
-
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override

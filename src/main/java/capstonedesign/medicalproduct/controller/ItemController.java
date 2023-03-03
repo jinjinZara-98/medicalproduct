@@ -60,7 +60,6 @@ public class ItemController {
         int totalPage = listPage.getTotalPages();
 
         model.addAttribute("items",  listPage.getContent());
-
         model.addAttribute("totalPage", totalPage);
 
         return "home";

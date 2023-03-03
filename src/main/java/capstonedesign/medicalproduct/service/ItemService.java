@@ -22,7 +22,6 @@ public class ItemService {
 
     public Page<ItemDto> findAllByName(ItemSearch itemSearch, int page) {
 
-
         return itemRepository.findAllByName(itemSearch, PageRequest.of(page,8, Sort.Direction.ASC, "id"));
 
     }

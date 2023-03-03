@@ -15,47 +15,46 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@Slf4j
 @RequiredArgsConstructor
 public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping("order/cartItem")
-    public String orderCartItems(@AuthenticationPrincipal MemberInfo member, OrderRequestDto orderDto, Model model) {
+    @PostMapping("order/cartItems")
+    public String orderCartItems(@AuthenticationPrincipal MemberInfo member, OrderRequestDto orderRequestDto, Model model) {
 
-        orderDto.setName(member.getName());
-        orderDto.setPhoneNumber(member.getPhoneNumber()); orderDto.setAddress(member.getAddress());
-        orderDto.setAddressDetail(member.getAddressDetail()); orderDto.setAccountHost(member.getAccountHost());
-        orderDto.setBankName(member.getBankName()); orderDto.setAccountNumber(member.getAccountNumber());
+        orderRequestDto.setName(member.getName());
+        orderRequestDto.setPhoneNumber(member.getPhoneNumber()); orderRequestDto.setAddress(member.getAddress());
+        orderRequestDto.setAddressDetail(member.getAddressDetail()); orderRequestDto.setAccountHost(member.getAccountHost());
+        orderRequestDto.setBankName(member.getBankName()); orderRequestDto.setAccountNumber(member.getAccountNumber());
 
-        List<OrderItemRequestDto> orderItems = orderDto.getOrderItemRequestDtos();
+        List<OrderItemRequestDto> orderItems = orderRequestDto.getOrderItemRequestDtos();
 
-        model.addAttribute("orderDto", orderDto);
+        model.addAttribute("orderDto", orderRequestDto);
         model.addAttribute("orderItemDto", orderItems);
 
         return "orders/order";
     }
 
-    @PostMapping("order/itemOne")
-    public String order(@AuthenticationPrincipal MemberInfo member, OrderRequestDto orderDto, Model model){
+    @PostMapping("order/item")
+    public String order(@AuthenticationPrincipal MemberInfo member, OrderRequestDto orderRequestDto, Model model){
 
-        orderDto.setName(member.getName());
-        orderDto.setPhoneNumber(member.getPhoneNumber()); orderDto.setAddress(member.getAddress());
-        orderDto.setAddressDetail(member.getAddressDetail()); orderDto.setAccountHost(member.getAccountHost());
-        orderDto.setBankName(member.getBankName()); orderDto.setAccountNumber(member.getAccountNumber());
+        orderRequestDto.setName(member.getName());
+        orderRequestDto.setPhoneNumber(member.getPhoneNumber()); orderRequestDto.setAddress(member.getAddress());
+        orderRequestDto.setAddressDetail(member.getAddressDetail()); orderRequestDto.setAccountHost(member.getAccountHost());
+        orderRequestDto.setBankName(member.getBankName()); orderRequestDto.setAccountNumber(member.getAccountNumber());
 
-        List<OrderItemRequestDto> orderItemDto = orderDto.getOrderItemRequestDtos();
+        List<OrderItemRequestDto> orderItemDto = orderRequestDto.getOrderItemRequestDtos();
 
-        model.addAttribute("orderDto",  orderDto);
+        model.addAttribute("orderDto",  orderRequestDto);
         model.addAttribute("orderItemDto", orderItemDto);
 
         return "orders/order";
     }
 
     @PostMapping("order/payment")
-    public String orderPro(@AuthenticationPrincipal MemberInfo member,
-                           @Valid @ModelAttribute("orderDto") OrderRequestDto orderDto, BindingResult bindingResult, Model model){
+    public String orderPro(@AuthenticationPrincipal MemberInfo member, Model model,
+                           @Valid @ModelAttribute("orderDto") OrderRequestDto orderDto, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()) {
 

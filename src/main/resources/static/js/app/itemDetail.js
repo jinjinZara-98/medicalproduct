@@ -1,10 +1,7 @@
-
 let quantity = $(".quantity_input").val();
-<!--        let price = $(".individual_Price").val();-->
 
 $(".plus_btn").on("click", function(){
     $(".quantity_input").val(++quantity);
-<!--            $(".price").val(quantity * price);-->
 });
 
 $(".minus_btn").on("click", function(){
@@ -13,7 +10,7 @@ $(".minus_btn").on("click", function(){
     }
 });
 
-function putItem() {
+function addItem() {
     alert("상품이 장바구니에 담겼습니다!");
     $(".cart_form").submit();
 }

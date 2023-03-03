@@ -40,7 +40,7 @@ public class CartService {
         return cartRepository.save(cart).getId();
     }
 
-    public List<CartResponseDto> findAllByMemberId (Long memberId) {
+    public List<CartResponseDto> findAllByMemberId(Long memberId) {
 
         return cartRepository.findAllByMemberId(memberId);
     }

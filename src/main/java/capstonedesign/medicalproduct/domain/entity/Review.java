@@ -16,7 +16,7 @@ public class Review {
     private long id;
 
     @Column(nullable = false)
-    String title;
+    private String title;
 
     @Lob
     @Column(nullable = false)

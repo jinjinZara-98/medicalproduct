@@ -1,6 +1,6 @@
 package capstonedesign.medicalproduct.security;
 
-import capstonedesign.medicalproduct.security.common.FormWebAuthenticationDetailsSource;
+//import capstonedesign.medicalproduct.security.common.FormWebAuthenticationDetailsSource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,6 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final FormWebAuthenticationDetailsSource formWebAuthenticationDetailsSource;
     private final AuthenticationSuccessHandler formAuthenticationSuccessHandler;
     private final AuthenticationFailureHandler formAuthenticationFailureHandler;
 
@@ -52,7 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login_proc")
-                .authenticationDetailsSource(formWebAuthenticationDetailsSource)
                 .successHandler(formAuthenticationSuccessHandler)
                 .failureHandler(formAuthenticationFailureHandler)
                 .permitAll()
